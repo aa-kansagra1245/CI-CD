@@ -1,6 +1,7 @@
 ﻿using CI_CD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,6 +21,8 @@ namespace CI_CD.Controllers
 
         public IActionResult Index()
         {
+            string json = JsonConvert.SerializeObject(new ErrorViewModel());
+            Console.WriteLine(json);
             return View();
         }
 
