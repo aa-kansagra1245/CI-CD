@@ -1,10 +1,10 @@
-name: CI-CD_Master
+name: CI-CD_Dev
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev ]
 
 jobs:
   build:
@@ -20,11 +20,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --no-restore
     - name: Publish
-      run: dotnet publish --configuration Release
+      run: dotnet publish
     - name: Publish Build Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
         name: Project_CI-CD
-        path: /home/runner/work/CI-CD/CI-CD/bin/Release/netcoreapp3.1/publish/
+        path: /home/runner/work/CI-CD/CI-CD/bin/Debug/netcoreapp3.1/publish/
