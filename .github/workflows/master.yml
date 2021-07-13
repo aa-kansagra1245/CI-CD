@@ -53,6 +53,6 @@ jobs:
         aws deploy create-deployment \
           --application-name DemoApplication \
           --deployment-group-name DemoApp_DeploymentGroup \
-          --deployment-config-name CodeDeployDefault.AllAtOnce
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
           --s3-location "bucket=codepipeline-us-east-2-475258622142, bundleType=zip"
           
