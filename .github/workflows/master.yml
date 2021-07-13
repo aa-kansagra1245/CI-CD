@@ -51,6 +51,6 @@ jobs:
     - name: Create CodeDeploy Deployment
       run: |
         aws deploy create-deployment \
-          --application-name DemoApp \
-          --deployment-group-name DemoApp_DeployGroup \
-          --deployment-config-name CodeDeployDefault.AllAtATime
+          --application-name DemoApplication \
+          --deployment-group-name DemoApp_DeploymentGroup \
+          --deployment-config-name CodeDeployDefault.AllAtOnce
