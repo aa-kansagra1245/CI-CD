@@ -37,3 +37,9 @@ jobs:
       with:
         name: Project_CI-CD
         path: /home/runner/work/CI-CD/CI-CD/bin/Release/netcoreapp3.1/publish/
+    - name: Deploy to EC2 instance
+      uses: easingthemes/ssh-deploy@v2.2.11
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        REMOTE_HOST: "ec2-18-117-153-15.us-east-2.compute.amazonaws.com"
+        REMOTE_USER: "Administrator"
