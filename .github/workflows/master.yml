@@ -54,5 +54,5 @@ jobs:
           --application-name DemoApplication \
           --deployment-group-name DemoApp_DeploymentGroup \
           --deployment-config-name CodeDeployDefault.AllAtOnce
-          --s3-location bucket=codepipeline-us-east-2-475258622142, bundleType=zip
+          --s3-location "bucket=codepipeline-us-east-2-475258622142, bundleType=zip"
           
