@@ -37,9 +37,20 @@ jobs:
       with:
         name: Project_CI-CD
         path: /home/runner/work/CI-CD/CI-CD/bin/Release/netcoreapp3.1/publish/
-    - name: Deploy to EC2 instance
-      uses: easingthemes/ssh-deploy@v2.2.11
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        REMOTE_HOST: "ec2-18-117-153-15.us-east-2.compute.amazonaws.com"
-        REMOTE_USER: "Administrator"
+        
+    - name: AWS cli install action
+      uses: chrislennon/action-aws-cli@1.1
+        
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+        
+    - name: Create CodeDeploy Deployment
+      run: |
+        aws deploy create-deployment \
+          --application-name DemoApp \
+          --deployment-group-name DemoApp_DeployGroup \
+          --deployment-config-name CodeDeployDefault.AllAtATime
